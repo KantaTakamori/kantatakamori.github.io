@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KANTA TAKAMORI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #000;
+      background: #fff;
+      display: flex;
+      min-height: 100vh;
+    }
+    header {
+      width: 180px;
+      padding: 20px;
+      border-right: 1px solid #ddd;
+      background: #fff;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .office-name {
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 40px;
+      letter-spacing: 0.1em;
+    }
+    .nav-list-vertical {
+      list-style: none;
+    }
+    .nav-list-vertical li {
+      margin-bottom: 20px;
+    }
+    .nav-list-vertical li a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      color: #000;
+      cursor: pointer;
+    }
+    .lang-toggle {
+      font-size: 13px;
+      text-align: center;
+      cursor: pointer;
+      color: #000;
+      margin: 20px 0 0;
+      width: 60px;
+      user-select: none;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 0;
+      align-self: center;
+    }
+    main {
+      margin-left: 200px;
+      padding: 40px 20px 80px;
+      width: 100%;
+      max-width: 800px;
+      margin-right: auto;
+    }
+    .content {
+      display: none;
+      text-align: center;
+    }
+    .active {
+      display: block;
+    }
+    .home-image svg {
+      max-width: 100%;
+      height: auto;
+      margin: 60px auto;
+      display: block;
+    }
+    .projects article {
+      border: none;
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .projects h2 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+    .projects h2 a {
+      cursor: pointer;
+      color: #000;
+      text-decoration: underline;
+    }
+    /* タイトル上の画像 */
+    .project-top-image {
+      max-width: 300px;
+      height: auto;
+      margin: 0 auto 12px;
+      border-radius: 6px;
+      display: block;
+    }
+    /* 詳細画像は縦に並べる */
+    .project-images {
+      display: none; /* 初期非表示 */
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .project-images svg {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .project-images svg:hover {
+      transform: scale(1.05);
+    }
+    .project-detail {
+      text-align: center;
+      margin-top: 12px;
+    }
+    .about svg {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+    .contact svg {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <div class="office-name">KANTA TAKAMORI</div>
+      <ul class="nav-list-vertical">
+        <li><a onclick="showSection('home')">Home</a></li>
+        <li><a onclick="showSection('projects')">Projects</a></li>
+        <li><a onclick="showSection('about')">About</a></li>
+        <li><a onclick="showSection('contact')">Contact</a></li>
+      </ul>
+      <div class="lang-toggle" onclick="toggleLang()">EN / JP</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="content active">
+      <div class="home-image">
+        <svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Modern building illustration">
+          <rect x="50" y="150" width="300" height="130" fill="#ccc" />
+          <rect x="70" y="170" width="50" height="110" fill="#999" />
+          <rect x="130" y="170" width="50" height="90" fill="#bbb" />
+          <rect x="190" y="140" width="80" height="150" fill="#777" />
+          <rect x="280" y="170" width="40" height="110" fill="#aaa" />
+          <line x1="70" y1="200" x2="110" y2="200" stroke="#555" stroke-width="3"/>
+          <line x1="70" y1="240" x2="110" y2="240" stroke="#555" stroke-width="3"/>
+          <line x1="130" y1="210" x2="180" y2="210" stroke="#444" stroke-width="3"/>
+          <line x1="190" y1="180" x2="260" y2="180" stroke="#222" stroke-width="4"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="content projects">
+      <article>
+        <!-- タイトル上の建物SVG -->
+        <svg class="project-top-image" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Building top image 202">
+          <rect x="20" y="40" width="160" height="50" fill="#bbb" stroke="#555" stroke-width="3" rx="8" ry="8"/>
+          <rect x="40" y="60" width="30" height="30" fill="#ddd" />
+          <rect x="90" y="60" width="30" height="30" fill="#ddd" />
+          <rect x="140" y="60" width="20" height="30" fill="#ddd" />
+          <polygon points="20,40 100,5 180,40" fill="#888" />
+        </svg>
+        <h2>
+          <a href="#" onclick="toggleProjectDetail(this);return false;" data-en="202" data-jp="202">202</a>
+        </h2>
+        <div class="project-images">
+          <!-- 詳細画像建物SVGを縦に -->
+          <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Detail image 1">
+            <rect x="10" y="50" width="180" height="40" fill="#ccc" stroke="#444" stroke-width="2" rx="6" ry="6"/>
+            <rect x="30" y="65" width="30" height="25" fill="#eee" />
+            <rect x="80" y="65" width="30" height="25" fill="#eee" />
+            <rect x="130" y="65" width="20" height="25" fill="#eee" />
+            <polygon points="10,50 100,10 190,50" fill="#999" />
+          </svg>
+          <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Detail image 2">
+            <rect x="15" y="45" width="170" height="45" fill="#bbb" stroke="#555" stroke-width="3" rx="7" ry="7"/>
+            <rect x="40" y="65" width="40" height="25" fill="#eee" />
+            <rect x="100" y="65" width="40" height="25" fill="#eee" />
+            <polygon points="15,45 100,15 185,45" fill="#777" />
+          </svg>
+          <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Detail image 3">
+            <rect x="5" y="55" width="190" height="35" fill="#ddd" stroke="#666" stroke-width="2" rx="5" ry="5"/>
+            <rect x="25" y="65" width="25" height="20" fill="#fff" />
+            <rect x="75" y="65" width="25" height="20" fill="#fff" />
+            <rect x="125" y="65" width="25" height="20" fill="#fff" />
+            <polygon points="5,55 100,20 195,55" fill="#aaa" />
+          </svg>
+        </div>
+        <div class="project-detail" style="display:none;">
+          <p data-en="Detailed explanation of room 202." data-jp="202号室の詳しい説明がここに入ります。">
+            202号室の詳しい説明がここに入ります。
+          </p>
+        </div>
+      </article>
+
+      <article>
+        <!-- タイトル上の建物SVG -->
+        <svg class="project-top-image" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Building top image Coming Soon">
+          <rect x="30" y="45" width="140" height="45" fill="#999" stroke="#444" stroke-width="3" rx="8" ry="8"/>
+          <rect x="50" y="60" width="30" height="25" fill="#eee" />
+          <rect x="110" y="60" width="30" height="25" fill="#eee" />
+          <polygon points="30,45 100,10 170,45" fill="#666" />
+        </svg>
+        <h2>
+          <a href="#" onclick="toggleProjectDetail(this);return false;" data-en="Coming Soon" data-jp="Coming Soon">Coming Soon</a>
+        </h2>
+        <div class="project-images">
+          <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coming Soon detail image A">
+            <rect x="20" y="50" width="160" height="40" fill="#aaa" stroke="#333" stroke-width="2" rx="6" ry="6"/>
+            <rect x="40" y="65" width="30" height="25" fill="#eee" />
+            <rect x="90" y="65" width="30" height="25" fill="#eee" />
+            <polygon points="20,50 100,15 180,50" fill="#777" />
+          </svg>
+          <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coming Soon detail image B">
+            <rect x="25" y="55" width="150" height="35" fill="#888" stroke="#222" stroke-width="2" rx="5" ry="5"/>
+            <rect x="50" y="65" width="40" height="20" fill="#ddd" />
+            <rect x="110" y="65" width="40" height="20" fill="#ddd" />
+            <polygon points="25,55 100,25 175,55" fill="#555" />
+          </svg>
+        </div>
+        <div class="project-detail" style="display:none;">
+          <p data-en="Details coming soon." data-jp="詳細は近日公開予定です。">
+            詳細は近日公開予定です。
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="content about">
+      <svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Studio illustration" style="margin-bottom:20px;">
+        <rect x="30" y="80" width="340" height="100" fill="#d4d4d4" />
+        <rect x="100" y="50" width="50" height="30" fill="#b0b0b0" />
+        <rect x="250" y="50" width="50" height="30" fill="#b0b0b0" />
+        <line x1="30" y1="120" x2="370" y2="120" stroke="#999" stroke-width="2"/>
+      </svg>
+      <p data-en="We are a creative design studio based in Japan. Our work ranges from architecture to visual branding." 
+         data-jp="私たちは日本を拠点とするクリエイティブなデザイン事務所です。建築からビジュアルブランディングまで幅広く手がけています。">
+        私たちは日本を拠点とするクリエイティブなデザイン事務所です。建築からビジュアルブランディングまで幅広く手がけています。
+      </p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="content contact">
+      <svg width="400" height="150" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contact illustration" style="margin-bottom:20px;">
+        <rect x="50" y="40" width="300" height="80" fill="#a0c4ff" />
+        <line x1="50" y1="40" x2="350" y2="120" stroke="#5880ff" stroke-width="4"/>
+        <line x1="350" y1="40" x2="50" y2="120" stroke="#5880ff" stroke-width="4"/>
+        <circle cx="200" cy="80" r="20" fill="#f2f2f2" />
+      </svg>
+      <p data-en="For inquiries, please contact: kanta.takamori0627@gmail.com" 
+         data-jp="お問い合わせは kanta.takamori0627@gmail.com までご連絡ください。">
+        お問い合わせは kanta.takamori0627@gmail.com までご連絡ください。
+      </p>
+      <p data-en="Phone: 080-2746-6257" 
+         data-jp="電話番号：080-2746-6257" style="margin-top:8px;">
+        電話番号：080-2746-6257
+      </p>
+    </section>
+
+  </main>
+
+  <script>
+    let isJapanese = true;
+
+    function showSection(id) {
+      document.querySelectorAll('.content').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    function toggleLang() {
+      isJapanese = !isJapanese;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = isJapanese ? el.dataset.jp : el.dataset.en;
+      });
+    }
+
+    function toggleProjectDetail(link) {
+      const article = link.closest('article');
+      const images = article.querySelector('.project-images');
+      const detail = article.querySelector('.project-detail');
+
+      const isVisible = detail.style.display === 'block';
+
+      // 全ての詳細と画像を閉じる
+      document.querySelectorAll('.project-detail').forEach(d => d.style.display = 'none');
+      document.querySelectorAll('.project-images').forEach(imgs => imgs.style.display = 'none');
+
+      if (!isVisible) {
+        detail.style.display = 'block';
+        images.style.display = 'flex';
+      }
+    }
+  </script>
+
+</body>
+</html>
