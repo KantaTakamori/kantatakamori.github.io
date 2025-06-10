@@ -129,10 +129,18 @@
       height: auto;
       margin-bottom: 20px;
     }
+    .about p {
+      text-align: left;
+      white-space: pre-line;
+      margin-bottom: 16px;
+    }
     .contact svg {
       max-width: 100%;
       height: auto;
       margin-bottom: 20px;
+    }
+    .contact p {
+      text-align: left;
     }
   </style>
 </head>
@@ -224,18 +232,10 @@
         <h2>
           <a href="#" onclick="toggleProjectDetail(this);return false;" data-en="Coming Soon" data-jp="Coming Soon">Coming Soon</a>
         </h2>
-        <div class="project-images">
-          <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coming Soon detail image A">
-            <rect x="20" y="50" width="160" height="40" fill="#aaa" stroke="#333" stroke-width="2" rx="6" ry="6"/>
-            <rect x="40" y="65" width="30" height="25" fill="#eee" />
-            <rect x="90" y="65" width="30" height="25" fill="#eee" />
-            <polygon points="20,50 100,15 180,50" fill="#777" />
-          </svg>
-          <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coming Soon detail image B">
-            <rect x="25" y="55" width="150" height="35" fill="#888" stroke="#222" stroke-width="2" rx="5" ry="5"/>
-            <rect x="50" y="65" width="40" height="20" fill="#ddd" />
-            <rect x="110" y="65" width="40" height="20" fill="#ddd" />
-            <polygon points="25,55 100,25 175,55" fill="#555" />
+        <div class="project-images" style="display:none;">
+          <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coming Soon detail">
+            <rect x="10" y="50" width="180" height="40" fill="#ccc" stroke="#444" stroke-width="2" rx="6" ry="6"/>
+            <text x="100" y="75" font-size="20" fill="#555" text-anchor="middle" dominant-baseline="middle">Coming Soon</text>
           </svg>
         </div>
         <div class="project-detail" style="display:none;">
@@ -247,54 +247,38 @@
     </section>
 
     <!-- ABOUT -->
-    <section id="about" class="content about">
-      <svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Studio illustration" style="margin-bottom:20px;">
-        <rect x="30" y="80" width="340" height="100" fill="#d4d4d4" />
-        <rect x="100" y="50" width="50" height="30" fill="#b0b0b0" />
-        <rect x="250" y="50" width="50" height="30" fill="#b0b0b0" />
-        <line x1="30" y1="120" x2="370" y2="120" stroke="#999" stroke-width="2"/>
-      </svg>
-      <p data-en="We are a creative design studio based in Japan. Our work ranges from architecture to visual branding." 
-         data-jp="私たちは日本を拠点とするクリエイティブなデザイン事務所です。建築からビジュアルブランディングまで幅広く手がけています。">
-        私たちは日本を拠点とするクリエイティブなデザイン事務所です。建築からビジュアルブランディングまで幅広く手がけています。
+    <section id="about" class="content about" style="text-align:left;">
+      <p>
+        高森 寛太（たかもり・かんた）<br />
+        二級建築士<br />
+        1995年 福岡生まれ<br />
+        2018年 九州産業大学工学部住居・インテリア設計学科卒業<br /><br />
+        ヒトの心を動かすことを考えながら<br />
+        都市や建築に関わる計画、設計、デザイン、リサーチを行っています。
       </p>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="content contact">
-      <svg width="400" height="150" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Contact illustration" style="margin-bottom:20px;">
-        <rect x="50" y="40" width="300" height="80" fill="#a0c4ff" />
-        <line x1="50" y1="40" x2="350" y2="120" stroke="#5880ff" stroke-width="4"/>
-        <line x1="350" y1="40" x2="50" y2="120" stroke="#5880ff" stroke-width="4"/>
-        <circle cx="200" cy="80" r="20" fill="#f2f2f2" />
-      </svg>
-      <p data-en="For inquiries, please contact: kanta.takamori0627@gmail.com" 
-         data-jp="お問い合わせは kanta.takamori0627@gmail.com までご連絡ください。">
-        お問い合わせは kanta.takamori0627@gmail.com までご連絡ください。
-      </p>
-      <p data-en="Phone: 080-2746-6257" 
-         data-jp="電話番号：080-2746-6257" style="margin-top:8px;">
-        電話番号：080-2746-6257
+    <section id="contact" class="content contact" style="text-align:left;">
+      <p>
+        kanta.takamori0627@gmail.com<br />
+        080-2746-6257
       </p>
     </section>
-
   </main>
 
   <script>
-    let isJapanese = true;
+    let currentLang = 'jp';
 
-    function showSection(id) {
-      document.querySelectorAll('.content').forEach(section => {
-        section.classList.remove('active');
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('.content');
+      sections.forEach(sec => {
+        sec.classList.remove('active');
       });
-      document.getElementById(id).classList.add('active');
-    }
-
-    function toggleLang() {
-      isJapanese = !isJapanese;
-      document.querySelectorAll('[data-en]').forEach(el => {
-        el.textContent = isJapanese ? el.dataset.jp : el.dataset.en;
-      });
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.classList.add('active');
+      }
     }
 
     function toggleProjectDetail(link) {
@@ -302,15 +286,60 @@
       const images = article.querySelector('.project-images');
       const detail = article.querySelector('.project-detail');
 
-      const isVisible = detail.style.display === 'block';
-
-      // 全ての詳細と画像を閉じる
-      document.querySelectorAll('.project-detail').forEach(d => d.style.display = 'none');
-      document.querySelectorAll('.project-images').forEach(imgs => imgs.style.display = 'none');
-
-      if (!isVisible) {
-        detail.style.display = 'block';
+      if (images.style.display === 'flex') {
+        images.style.display = 'none';
+        detail.style.display = 'none';
+      } else {
         images.style.display = 'flex';
+        detail.style.display = 'block';
+      }
+    }
+
+    function toggleLang() {
+      currentLang = (currentLang === 'jp') ? 'en' : 'jp';
+
+      // projects titles and details
+      document.querySelectorAll('.projects h2 a').forEach(link => {
+        link.textContent = link.getAttribute('data-' + currentLang);
+      });
+      document.querySelectorAll('.project-detail p').forEach(p => {
+        p.textContent = p.getAttribute('data-' + currentLang);
+      });
+
+      // about
+      const aboutP = document.querySelector('#about p');
+      if (currentLang === 'en') {
+        aboutP.innerHTML = `
+          Kanta Takamori<br />
+          Licensed Architect<br />
+          Born 1995 in Fukuoka<br />
+          Graduated 2018 from Kyushu Sangyo University, Department of Housing & Interior Design<br /><br />
+          Thinking about moving human hearts,<br />
+          I engage in planning, design, architecture, and research related to cities and buildings.
+        `;
+      } else {
+        aboutP.innerHTML = `
+          高森 寛太（たかもり・かんた）<br />
+          二級建築士<br />
+          1995年 福岡生まれ<br />
+          2018年 九州産業大学工学部住居・インテリア設計学科卒業<br /><br />
+          ヒトの心を動かすことを考えながら<br />
+          都市や建築に関わる計画、設計、デザイン、リサーチを行っています。
+        `;
+      }
+
+      // contact
+      const contactP = document.querySelector('#contact p');
+      if (currentLang === 'en') {
+        contactP.innerHTML = `
+          kanta.takamori0627@gmail.com<br />
+          080-2746-6257
+        `;
+      } else {
+        contactP.innerHTML = `
+          kanta.takamori0627@gmail.com<br />
+          080-2746-6257
+        `;
       }
     }
   </script>
